@@ -1,0 +1,11 @@
+name: test_timeout_repro
+description: This reproduces a timeout we are seeing when running tests in a docker container.
+
+environment:
+  sdk: '>=2.2.0 <3.0.0'
+
+dev_dependencies:
+  build_runner: ^1.0.0
+  build_test: ">=0.9.0 <2.0.0"
+  build_web_compilers: ^1.0.0
+  test: ^1.0.0
