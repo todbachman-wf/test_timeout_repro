@@ -1,4 +1,4 @@
-FROM google/dart:2.3.2 as dart2
+FROM google/dart:2.4 as dart2
 
 # Install Chromium and wget.
 RUN apt-get update -qq
@@ -25,6 +25,9 @@ ENV CHROMIUM_FLAGS='--no-sandbox'
 RUN mv /usr/bin/chromium /usr/bin/google-chrome && \
     google-chrome --version
 RUN pub run test --precompiled build -p chrome -r expanded test/big_test.dart
+
+# Specify the location of the Chrome debugging log.
+ENV CHROME_LOG_FILE=/build/chrome.log
 
 # Run the tests on Chrome proper.
 RUN mv /usr/bin/google-chrome-stable /usr/bin/google-chrome && \
